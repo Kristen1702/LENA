@@ -5,6 +5,8 @@ Adafruit_LIS2MDL mag = Adafruit_LIS2MDL();
 
 void setup() {
   Serial.begin(9600);
+  Wire.begin();
+  delay(100);
   while (!Serial); // Wait for serial monitor
 // Initialize the magnetometer
   if (!mag.begin()) {
