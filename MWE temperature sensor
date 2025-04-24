@@ -1,0 +1,19 @@
+# include <OneWire.h> // Required header
+# include <DallasTemperature.h> // Required header
+# define DS18B20_PIN 2 // Dataline is plugged into digital pin 2
+OneWire oneWire(DS18B20_PIN); // setup the oneWire to communicate with sensor
+DallasTemperature sensors(&oneWire); // send the oneWire reference to DallasTemperature
+void setup(void) {
+  sensors.begin(); // start the sensor (wiring)
+  Serial.begin(9600);
+}
+
+void loop(void) {
+  sensors.requestTemperatures(); // send request to device to get temperature
+  Serial.print("Temperature: "); // print temperature value
+  Serial.print(sensors.getTempCByIndex(0));
+  Serial.print("°C ");
+
+  delay(1000);
+
+}
